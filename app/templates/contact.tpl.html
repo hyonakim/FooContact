@@ -1,0 +1,13 @@
+<h3>Contact Foo Baz</h3>
+
+<form ng-submit='vm.addPerson(personObj)'>
+  <input placeholder='Your full name' ng-model='personObj.fullName'>
+  <small>{{vm.NameerrMsg}}</small>
+  <input placeholder='Your email address' ng-model='personObj.email'>
+  <small>{{vm.EmailerrMsg}}</small>
+  <input placeholder='http://yourwebsite.com' ng-model='personObj.website'>
+  <small>{{vm.SiteerrMsg}}</small>
+  <textarea placeholder='Write something here' name="textarea" rows="10" cols="50" ng-model='personObj.msg'></textarea>
+  <small>{{vm.MsgerrMsg}}</small>
+  <button>Submit</button>
+</form>
