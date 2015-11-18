@@ -8407,6 +8407,12 @@ th.hide-for-touch {
 .fa-fonticons:before {
   content: ""; }
 
+html {
+  box-sizing: border-box; }
+
+*, *::after, *::before {
+  box-sizing: inherit; }
+
 body {
   background: #fff; }
   body ul {
@@ -8421,8 +8427,23 @@ body {
         margin-left: 2%; }
       body .commentList .homeFields .properties {
         font-weight: bold; }
-  body .wrong {
-    color: red;
-    margin-bottom: 4%; }
+  body .contactTitle {
+    text-align: center; }
+  body .contactForm {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 48.82117%;
+    margin-left: 25.58941%;
+    margin-top: 5%; }
+    body .contactForm:last-child {
+      margin-right: 0; }
+    body .contactForm input {
+      margin-bottom: 0; }
+    body .contactForm .wrong {
+      color: red;
+      margin-bottom: 4%;
+      display: block;
+      font-size: 80%; }
 
 /*# sourceMappingURL=main.css.map */

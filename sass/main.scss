@@ -2,6 +2,8 @@
 // See Readme for a list of supported ones
 @import 'foundation';
 @import 'font-awesome';
+@import 'bourbon';
+@import 'neat';
 
 body {
   background: #fff;
@@ -34,9 +36,25 @@ body {
 
 
 // Contact Form //
+  
+  .contactTitle {
+    text-align: center;
+  }
 
-  .wrong {
-    color: red;
-    margin-bottom: 4%;
+  .contactForm {
+    @include span-columns(6);
+    @include shift(3);
+    margin-top: 5%;
+
+    input {
+      margin-bottom: 0;
+    }
+
+    .wrong {
+      color: red;
+      margin-bottom: 4%;
+      display: block;
+      font-size: 80%;
+    }
   }
 }
