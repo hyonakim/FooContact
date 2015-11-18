@@ -7,6 +7,7 @@
 - SASS
 - Javascript
 - Angular Framework
+- PARSE Database
 
 
 ## Usage
