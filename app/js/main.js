@@ -61,7 +61,7 @@ var ContactController = function ContactController(ContactService, $scope, $stat
     ContactService.addPerson(personObj).then(function (res) {
       console.log(res);
     });
-    $state.go('/');
+    $state.go('root.home');
   }
 
   /// Validating the Name
@@ -144,7 +144,7 @@ var HomeController = function HomeController($scope, ContactService) {
 
   var vm = this;
 
-  vm.title = 'Contact List';
+  vm.title = 'Foo Comments';
   vm.getAll = getAll();
 
   function getAll() {

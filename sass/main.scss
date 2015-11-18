@@ -1,9 +1,10 @@
 // Put any @imports here
 // See Readme for a list of supported ones
 @import 'foundation';
+@import 'font-awesome';
 
 body {
-  background: #e2ebf3;
+  background: #fff;
 
   ul {
     list-style: none;
@@ -11,9 +12,28 @@ body {
 
 // Home View //
   
-  .properties {
-    font-weight: bold;
+  .fooTitle {
+    text-align: center;
   }
+
+  .commentList {
+    margin-top: 5%;
+
+    .homeFields {
+      margin-left: 2%;
+
+      span {
+        margin-left: 2%;
+      }
+
+      .properties {
+        font-weight: bold;
+      }
+    }
+  }
+
+
+// Contact Form //
 
   .wrong {
     color: red;

@@ -8,7 +8,7 @@ let ContactController = function(ContactService, $scope, $state) {
     ContactService.addPerson (personObj).then ( (res) => {
       console.log(res);
     });
-    $state.go('/');
+    $state.go('root.home');
 
   }
 

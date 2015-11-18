@@ -2,7 +2,7 @@ let HomeController = function($scope, ContactService) {
   
   let vm = this;
 
-  vm.title = 'Contact List';
+  vm.title = 'Foo Comments';
   vm.getAll = getAll();
 
   function getAll () {
