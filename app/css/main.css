@@ -6389,5 +6389,8 @@ th.hide-for-touch {
 
 body {
   background: #e2ebf3; }
+  body .wrong {
+    color: red;
+    margin-bottom: 4%; }
 
 /*# sourceMappingURL=main.css.map */

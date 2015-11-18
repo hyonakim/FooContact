@@ -13,8 +13,8 @@ let ContactController = function(ContactService, $scope) {
 
   /// Validating the Name
   let validateName = (fullName) => {
-    if(fullName.length < 1) {
-      vm.NameerrMsg = 'Name cannot be left empty';
+    if(fullName.length <= 1) {
+      vm.NameerrMsg = 'Need First and Last Name';
     } else {
       vm.NameerrMsg = '';
     }
@@ -24,6 +24,7 @@ let ContactController = function(ContactService, $scope) {
     if(!newVal) return;
     validateName(newVal);
   });
+
 
   /// Validating the Email
   let validateEmail = (email) => {
@@ -42,31 +43,40 @@ let ContactController = function(ContactService, $scope) {
     validateEmail(newVal);
   });
 
+
   /// Validating the Website Address
   let validateWebsite = (website) => {
 
     let http = website.includes('http://');
     let https = website.includes('https://');
 
-    if(http !== true || https !== true) {
+    if (website.indexOf('http://') < 0 && website.indexOf('https://') < 0) {
       vm.SiteerrMsg = 'Website must start with http:// or https://';
     } else {
       vm.SiteerrMsg = '';
     }
   };
 
+  $scope.$watch('personObj.website', function (newVal, prevVal) {
+    if(!newVal) return;
+    validateWebsite(newVal);
+  });
+  
+
   /// Validating Message Area
   let validateMsg = (msg) => {
 
-    if(msg.length < 1) {
-      vm.MsgerrMsg = 'Message cannot be left empty';
+    if(msg.length <= 1) {
+      vm.MsgerrMsg = 'Must be longer';
     } else {
       vm.MsgerrMsg = '';
     }
   };
 
-
-
+  $scope.$watch('personObj.msg', function (newVal, prevVal) {
+    if(!newVal) return;
+    validateMsg(newVal);
+  });
 
 };
 
