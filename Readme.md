@@ -1,6 +1,12 @@
-## Welcome to My Project
+## FooContact - A minimal contact form
 
-> I am your Readme.md file, you should probably update me.
+> Deployment: http://foo-contactform.surge.sh
+
+> This appliation was created using the following: 
+- HTML5
+- SASS
+- Javascript
+- Angular Framework
 
 
 ## Usage
@@ -21,20 +27,6 @@
 - [Font Awesome](https://fortawesome.github.io/Font-Awesome/)
 - [Foundation 5](http://foundation.zurb.com/)
 
-#### How to use them?
-
-At the top of your `main.scss` file, just import any of the following:
-
-```scss
-@import "bourbon";
-@import "neat";
-
-@import "foundation";
-
-@import "font-awesome";
-```
-
-> Note: You probably don't want to use BOTH Bourbon/Neat & Foundation. Just pick one.
 
 ## NPM Tools Used
 
