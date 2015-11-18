@@ -11,8 +11,12 @@ var config = function config($stateProvider, $urlRouterProvider) {
   $stateProvider.state('root', {
     abstract: true,
     templateUrl: 'templates/layout.tpl.html'
-  }).state('root.contact', {
+  }).state('root.home', {
     url: '/',
+    controller: 'HomeController as vm',
+    templateUrl: 'templates/home.tpl.html'
+  }).state('root.contact', {
+    url: '/Contact',
     controller: 'ContactController as vm',
     templateUrl: 'templates/contact.tpl.html'
   });
@@ -47,7 +51,7 @@ module.exports = exports['default'];
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
-var ContactController = function ContactController(ContactService, $scope) {
+var ContactController = function ContactController(ContactService, $scope, $state) {
 
   var vm = this;
 
@@ -57,6 +61,7 @@ var ContactController = function ContactController(ContactService, $scope) {
     ContactService.addPerson(personObj).then(function (res) {
       console.log(res);
     });
+    $state.go('/');
   }
 
   /// Validating the Name
@@ -124,12 +129,38 @@ var ContactController = function ContactController(ContactService, $scope) {
   });
 };
 
-ContactController.$inject = ['ContactService', '$scope'];
+ContactController.$inject = ['ContactService', '$scope', '$state'];
 
 exports['default'] = ContactController;
 module.exports = exports['default'];
 
 },{}],4:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+var HomeController = function HomeController($scope, ContactService) {
+
+  var vm = this;
+
+  vm.title = 'Contact List';
+  vm.getAll = getAll();
+
+  function getAll() {
+    ContactService.getAllContacts().then(function (res) {
+      vm.allContacts = res.data.results;
+      console.log(vm.allContacts);
+    });
+  }
+};
+
+HomeController.$inject = ['$scope', 'ContactService'];
+
+exports['default'] = HomeController;
+module.exports = exports['default'];
+
+},{}],5:[function(require,module,exports){
 'use strict';
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
@@ -160,13 +191,17 @@ var _servicesContactServices2 = _interopRequireDefault(_servicesContactServices)
 
 // Controllers
 
+var _controllersHomeController = require('./controllers/home.controller');
+
+var _controllersHomeController2 = _interopRequireDefault(_controllersHomeController);
+
 var _controllersContactController = require('./controllers/contact.controller');
 
 var _controllersContactController2 = _interopRequireDefault(_controllersContactController);
 
-_angular2['default'].module('app', ['ui.router']).config(_config2['default']).constant('PARSE', _constantsParseConstant2['default']).controller('ContactController', _controllersContactController2['default']).service('ContactService', _servicesContactServices2['default']);
+_angular2['default'].module('app', ['ui.router']).config(_config2['default']).constant('PARSE', _constantsParseConstant2['default']).controller('HomeController', _controllersHomeController2['default']).controller('ContactController', _controllersContactController2['default']).service('ContactService', _servicesContactServices2['default']);
 
-},{"./config":1,"./constants/parse.constant":2,"./controllers/contact.controller":3,"./services/contact.services":5,"angular":8,"angular-ui-router":6}],5:[function(require,module,exports){
+},{"./config":1,"./constants/parse.constant":2,"./controllers/contact.controller":3,"./controllers/home.controller":4,"./services/contact.services":6,"angular":9,"angular-ui-router":7}],6:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -177,6 +212,7 @@ var ContactService = function ContactService($http, PARSE) {
   var url = PARSE.URL + 'classes/info';
 
   this.getAllContacts = getAllContacts;
+  this.addPerson = addPerson;
 
   function ContactInfo(data) {
     this.fullName = data.fullName;
@@ -185,13 +221,13 @@ var ContactService = function ContactService($http, PARSE) {
     this.msg = data.msg;
   }
 
-  function getAllContacts() {
-    return $http.get(url, PARSE.CONFIG);
-  }
-
   function addPerson(data) {
     var newPerson = new ContactInfo(data);
     return $http.post(url, newPerson, PARSE.CONFIG);
+  }
+
+  function getAllContacts() {
+    return $http.get(url, PARSE.CONFIG);
   }
 };
 
@@ -200,7 +236,7 @@ ContactService.$inject = ['$http', 'PARSE'];
 exports['default'] = ContactService;
 module.exports = exports['default'];
 
-},{}],6:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 /**
  * State-based routing for AngularJS
  * @version v0.2.15
@@ -4571,7 +4607,7 @@ angular.module('ui.router.state')
   .filter('isState', $IsStateFilter)
   .filter('includedByState', $IncludedByStateFilter);
 })(window, window.angular);
-},{}],7:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 /**
  * @license AngularJS v1.4.7
  * (c) 2010-2015 Google, Inc. http://angularjs.org
@@ -33476,11 +33512,11 @@ $provide.value("$locale", {
 })(window, document);
 
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
-},{}],8:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 require('./angular');
 module.exports = angular;
 
-},{"./angular":7}]},{},[4])
+},{"./angular":8}]},{},[5])
 
 
 //# sourceMappingURL=main.js.map

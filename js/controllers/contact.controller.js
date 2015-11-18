@@ -1,4 +1,4 @@
-let ContactController = function(ContactService, $scope) {
+let ContactController = function(ContactService, $scope, $state) {
   
   let vm = this;
 
@@ -8,6 +8,8 @@ let ContactController = function(ContactService, $scope) {
     ContactService.addPerson (personObj).then ( (res) => {
       console.log(res);
     });
+    $state.go('/');
+
   }
 
 
@@ -80,6 +82,6 @@ let ContactController = function(ContactService, $scope) {
 
 };
 
-ContactController.$inject = ['ContactService', '$scope'];
+ContactController.$inject = ['ContactService', '$scope', '$state'];
 
 export default ContactController;

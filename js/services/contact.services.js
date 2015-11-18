@@ -3,6 +3,7 @@ let ContactService = function($http, PARSE) {
   let url = PARSE.URL + 'classes/info';
 
   this.getAllContacts = getAllContacts;
+  this.addPerson = addPerson;
 
   function ContactInfo (data) {
     this.fullName = data.fullName;
@@ -11,13 +12,13 @@ let ContactService = function($http, PARSE) {
     this.msg = data.msg;
   }
 
-  function getAllContacts () {
-    return $http.get(url, PARSE.CONFIG);
-  }
-
   function addPerson (data) {
     let newPerson = new ContactInfo(data);
     return $http.post(url, newPerson, PARSE.CONFIG);
+  }
+
+  function getAllContacts () {
+    return $http.get(url, PARSE.CONFIG);
   }
 
 };

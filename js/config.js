@@ -7,8 +7,13 @@ let config = function($stateProvider, $urlRouterProvider) {
       abstract: true,
       templateUrl: 'templates/layout.tpl.html'
     })
+    .state('root.home', {
+      url: '/',
+      controller: 'HomeController as vm',
+      templateUrl: 'templates/home.tpl.html'
+    })
     .state('root.contact', {
-      url:'/',
+      url:'/Contact',
       controller: 'ContactController as vm',
       templateUrl: 'templates/contact.tpl.html'
     });
